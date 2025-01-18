@@ -10,6 +10,14 @@ Persona::Persona(int id, const std::string& nombre, const std::string& direccion
 	this->calcularEdad();
 }
 
+Persona::Persona(){
+    this->id=-1;
+    this->nombre = "-";
+	this->direccion = "-";
+	this->anioNacimiento = 2025;
+    this->edad=0;
+}
+
 void Persona::calcularEdad() {
 	this->edad = ANIO_ACTUAL - this->anioNacimiento;
 }

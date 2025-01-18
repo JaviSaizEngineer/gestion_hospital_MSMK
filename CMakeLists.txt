@@ -9,6 +9,8 @@ set(SOURCES
     medico.cpp
     paciente.cpp
     persona.cpp
+    fecha.cpp
+    registroClinico.cpp
 )
 
 # Crear el ejecutable

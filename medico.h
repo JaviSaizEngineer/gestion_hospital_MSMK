@@ -10,7 +10,7 @@ private:
     bool disponible;
 public:
     Medico(int id, const std::string& nombre, const std::string& direccion, int anioNacimiento,const std::string &especialidad ,bool disponible);  // Constructor
-
+    Medico();
 	void generarReporte(const std::string &comentario)const override;
 	void mostrarInformacion()const override;
 

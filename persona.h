@@ -16,6 +16,7 @@ class Persona {
 		int anioNacimiento;
 	public:
 		Persona(int id, const std::string& nombre, const std::string& direccion, int anioNacimiento);
+        Persona();
 
 		//metodo para calcular la edad de la persona 
 		void calcularEdad();

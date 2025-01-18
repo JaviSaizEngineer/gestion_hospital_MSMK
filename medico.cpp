@@ -7,6 +7,11 @@ Medico::Medico(int id, const std::string& nombre, const std::string& direccion, 
         this->disponible=disponible;
     }
 
+Medico::Medico():Persona(){
+    this->especialidad="-";
+    this->disponible=false;
+}
+
 std::string Medico::getEspecialidad() const{
     return this->especialidad;
 }
