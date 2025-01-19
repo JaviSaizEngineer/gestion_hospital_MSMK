@@ -18,3 +18,5 @@ poo_project
 
 # Archivos de logs
 *.log
+
+.DS_Store

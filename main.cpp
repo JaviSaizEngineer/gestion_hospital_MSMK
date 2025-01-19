@@ -104,12 +104,9 @@ int main(int argc, char** argv) {
             lectura>>aux;//--medicos--
             lectura>>idMedico;
             while(idMedico!=-1){//mientras no llegues al centinela
-                //getline(lectura,nombreMedico);
                 lectura>>nombreMedico;
-                //getline(lectura,direccionMedico);
                 lectura>>direccionMedico;
                 lectura>>anioNacimientoMedico;
-                //getline(lectura,especialidad);
                 lectura>>especialidad;
                 lectura>>disponible;
                 if(disponible=="Si"){
@@ -123,13 +120,10 @@ int main(int argc, char** argv) {
             lectura>>aux; //--pacientes--
             lectura>>idPaciente;
             while(idPaciente!=-1){
-                //getline(lectura,nombrePaciente);
                 lectura>>nombrePaciente;
-                //getline(lectura,direccionPaciente);
                 lectura>>direccionPaciente;
                 lectura>>anioNacimiento;
                 lectura>>telefonoPaciente;
-                //getline(lectura,notas);
                 lectura>>notas;
                 lectura>>dia;
                 lectura>>mes;
@@ -146,9 +140,6 @@ int main(int argc, char** argv) {
                     lectura>>diagnostico;
                     lectura>>tratamiento;
                     lectura>>observacion;
-                    //getline(lectura,diagnostico);
-                    //getline(lectura,tratamiento);
-                    //getline(lectura,observacion);
                 }
                 lectura>>idPaciente;
             }
@@ -196,8 +187,7 @@ int main(int argc, char** argv) {
                         std::cout<<"Introduce el id del paciente: ";
                         std::cin>>idPaciente;
                         std::cout<<"Introduce el nombre del paciente: ";
-                        std::cin.ignore();
-                        getline(std::cin,nombrePaciente);
+                        std::cin>>nombrePaciente;
                         std::cout<<"Introduce la direccion del paciente: ";
                         std::cin>>direccionPaciente;
                         std::cout<<"Introduce el anio de nacimiento del paciente: ";
@@ -224,21 +214,18 @@ int main(int argc, char** argv) {
                         std::cout<<"Introduce el id del paciente del que quieres modificar informacion: ";
                         std::cin>>idPaciente;
                         std::cout<<"Introduce la nueva direccion: ";
-                        std::cin.ignore();
-                        getline(std::cin,direccionPaciente);
+                        std::cin>>direccionPaciente;
                         std::cout<<"Introduce la nueva edad del paciente: ";
                         std::cin>>edadPaciente;
                         std::cout<<"Introduce ela nueva nota del paciente: ";
-                        std::cin.ignore();
-                        getline(std::cin,notas);
+                        std::cin>>notas;
                         std::cout<<"Introduce el nuevo telefono del paciente: ";
                         std::cin>>telefonoPaciente;
                         pacientes[idPaciente]->modificarDatosPersonales(direccionPaciente,edadPaciente,notas,telefonoPaciente);
                     break;
                     case 4:
                         std::cout<<"Introduce el nombre del paciente a buscar: ";
-                        std::cin.ignore();
-                        getline(std::cin,nombrePaciente);
+                        std::cin>>nombrePaciente;
                         busquedaPorNombre(pacientes,nombrePaciente);
                     break;
                     case 5:
@@ -272,7 +259,6 @@ int main(int argc, char** argv) {
                         std::cin>>dia;
                         std::cout<<"Introduce el diagnostico del paciente: ";
                         std::cin>>diagnostico;
-                        
                         std::cout<<"Introduce el tratamiento del paciente: ";
                         std::cin>>tratamiento;
                         std::cout<<"Introduce la observacion del paciente: ";
@@ -293,14 +279,11 @@ int main(int argc, char** argv) {
                         std::cout<<"Introduce el id del medico: ";
                         std::cin>>idMedico;
                         std::cout<<"Introduce el nombre del medico: ";
-                        std::cin.ignore();
-                        getline(std::cin,nombreMedico);
+                        std::cin>>nombreMedico;
                         std::cout<<"Introduce la direccion del medico: ";
-                        std::cin.ignore();
-                        getline(std::cin,direccionMedico);
+                        std::cin>>direccionMedico;
                         std::cout<<"Introduce la especialidad del medico: ";
-                        std::cin.ignore();
-                        getline(std::cin,especialidad);
+                        std::cin>>especialidad;
                         std::cout<<"Introduce el anio de nacimiento del medico: ";
                         std::cin>>anioNacimientoMedico;
                         altaMedico(medicos,idMedico,nombreMedico,direccionMedico,anioNacimientoMedico,especialidad,true);
@@ -312,8 +295,7 @@ int main(int argc, char** argv) {
                     break;
                     case 3:
                         std::cout<<"Introduce la especialidad a buscar: ";
-                        std::cin.ignore();
-                        getline(std::cin,especialidad);
+                        std::cin>>especialidad;
                         listarPorEspecialidad(medicos,especialidad);
                     break;
                     case 4:

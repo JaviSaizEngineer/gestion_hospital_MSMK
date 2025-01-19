@@ -75,9 +75,21 @@ std::vector<RegistroClinico> Paciente::obtenerRegitrosClinicos() const {
 
 //funciones
 void altaPaciente(std::vector<Paciente *>& pacientes,int id, const std::string& nombre, const std::string& direccion, int anioNacimiento, int telefono, const std::string &notas,const Fecha& fecha) {
-    Paciente* paciente= new Paciente(id, nombre, direccion, anioNacimiento,telefono,notas,fecha);
-    pacientes.push_back(paciente);
-    std::cout << "Paciente " << nombre << " dado de alta.\n";
+    bool encontrado=false;
+    size_t i=0;
+    while(!encontrado && i<pacientes.size()){
+        if(pacientes[i]->getId()==id){
+            encontrado=true;
+            std::cout << "Ya exite un paciente con con id: " << id << ".\n";
+        }
+        i++;
+    }
+
+    if (!encontrado) {
+        Paciente* paciente= new Paciente(id, nombre, direccion, anioNacimiento,telefono,notas,fecha);
+        pacientes.push_back(paciente);
+        std::cout << "Paciente " << nombre << " dado de alta.\n";
+    }
 }
 
 void bajaPaciente(std::vector<Paciente *>& pacientes, int id) {

@@ -45,9 +45,22 @@ void Medico::generarReporte(const std::string &comentario)const{
 }
 
 void altaMedico(std::vector<Medico *>& medicos,int id, const std::string& nombre, const std::string& direccion, int anioNacimiento,const std::string &especialidad,bool disponible) {
-    Medico* medico= new Medico(id, nombre, direccion, anioNacimiento,especialidad ,disponible);
-    medicos.push_back(medico);
-    std::cout << "Médico " << nombre << " dado de alta con especialidad " << especialidad << ".\n";
+    bool encontrado=false;
+    size_t i=0;
+    while(!encontrado && i<medicos.size()){
+        if(medicos[i]->getId()==id){
+            encontrado=true;
+            std::cout << "Ya exite un medico con con id: " << id << ".\n";
+        }
+        i++;
+    }
+
+    if (!encontrado) {
+        Medico* medico= new Medico(id, nombre, direccion, anioNacimiento,especialidad ,disponible);
+        medicos.push_back(medico);
+        std::cout << "Médico " << nombre << " dado de alta con especialidad " << especialidad << ".\n";
+    }
+
 }
 
 void bajaMedico(std::vector<Medico *>& medicos, int id) {
