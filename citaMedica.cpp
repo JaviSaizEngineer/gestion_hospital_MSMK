@@ -10,6 +10,7 @@ CitaMedica::CitaMedica(int id,const Paciente &paciente,const Medico &medico, con
 }
 
 void CitaMedica::mostrarCita() const{
+    std::cout<<"\nId: "<<this->paciente.getId();
     std::cout<<"\nPaciente: "<<this->paciente.getNombre();
     std::cout<<"\nMedico: "<<this->medico.getNombre();
     std::cout<<"\nFecha: "<<this->fecha;
@@ -60,4 +61,67 @@ void asignarCita(std::vector<CitaMedica *>& citas,int id,const Paciente &pacient
     CitaMedica* cita= new CitaMedica(id,paciente,medico, fecha,urgente);
     citas.push_back(cita);
     std::cout << "Cita con id " << id << " agregada.\n";
+}
+
+// Comparador para ordenar las citas
+bool compararCitas(const CitaMedica *cita1, const CitaMedica *cita2) {
+    bool cita1delante=false;
+    if (cita1->getUrgente()) {
+        cita1delante=true;
+    }
+    else if(!cita1->getUrgente() && !cita2->getUrgente()){
+        if(cita1->getFecha()<cita2->getFecha()){
+            cita1delante=true;
+        }
+    }
+
+    return cita1delante;
+}
+
+// Función para ordenar las citas médicas
+void ordenarCitasPorUrgenciaYFecha(std::vector<CitaMedica *>& citas) {
+    std::sort(citas.begin(), citas.end(), compararCitas);
+}
+
+void cancelarCita(std::vector<CitaMedica *>& citas, int id) {
+    bool encontrado=false;
+    size_t i=0;
+    while(!encontrado && i<citas.size()){
+        if(citas[i]->getId()==id){
+            delete citas[i];
+            citas.erase(citas.begin() + i);
+            encontrado=true;
+            std::cout << "Cita con Id " << citas[i]->getId() << " cancelada.\n";
+        }
+        i++;
+    }
+
+    if (!encontrado) {
+        std::cout << "No se encontró la cita con id: " << id << ".\n";
+    }
+}
+
+void modificarCita(std::vector<CitaMedica *>& citas, int id,const Fecha &fecha,bool urgente) {
+    bool encontrado=false;
+    size_t i=0;
+    while(!encontrado && i<citas.size()){
+        if(citas[i]->getId()==id){
+            citas[i]->setFecha(fecha);
+            citas[i]->setUrgente(urgente);
+            encontrado=true;
+            std::cout << "Cita con Id " << citas[i]->getId() << " modificada.\n";
+        }
+        i++;
+    }
+
+    if (!encontrado) {
+        std::cout << "No se encontró la cita con id: " << id << ".\n";
+    }
+}
+
+void mostrarCitas(const std::vector<CitaMedica*>& citas) {
+    for (const auto& cita : citas) {
+        cita->mostrarCita();
+        std::cout << "-----------------------------------------------\n";
+    }
 }

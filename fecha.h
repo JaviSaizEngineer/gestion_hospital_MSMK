@@ -15,6 +15,7 @@ class Fecha {
         Fecha();
 
         bool operator==(const Fecha& fecha);
+        bool operator<(const Fecha& fecha);
 		friend std::ostream& operator<<(std::ostream& out, const Fecha &libro);
         int getDia();
         void setDia(int dia);

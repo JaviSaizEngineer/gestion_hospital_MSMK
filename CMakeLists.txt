@@ -11,6 +11,7 @@ set(SOURCES
     persona.cpp
     fecha.cpp
     registroClinico.cpp
+    citaMedica.cpp
 )
 
 # Crear el ejecutable

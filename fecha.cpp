@@ -24,6 +24,24 @@ bool Fecha::operator==(const Fecha& fecha){
     return (this->anio==fecha.anio && this->dia==fecha.dia && this->mes==fecha.mes);
 }
 
+bool Fecha::operator<(const Fecha& fecha){
+    bool esMenor=false;
+    if(this->anio<fecha.anio){
+        esMenor=true;
+    }
+    else if(this->anio==fecha.anio){
+        if(this->mes<fecha.mes){
+            esMenor=true;
+        }
+        else if(this->mes==fecha.mes){
+            if(this->dia<fecha.dia){
+                esMenor=true;
+            }
+        }
+    }
+    return esMenor;
+}
+
 // Definición del operador << para imprimir la fecha
 std::ostream& operator<<(std::ostream& out, const Fecha& fecha) {
     // Usamos std::setw para asegurar que los días y meses sean de dos dígitos
