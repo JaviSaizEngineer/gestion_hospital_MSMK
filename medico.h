@@ -24,9 +24,11 @@ public:
 
 };
 
-void altaMedico(std::vector<Medico *>& medicos,int id, const std::string& nombre, const std::string& direccion, int anioNacimiento,const std::string &especialidad);
+void altaMedico(std::vector<Medico *>& medicos,int id, const std::string& nombre, const std::string& direccion, int anioNacimiento,const std::string &especialidad,bool disponible);
 void bajaMedico(std::vector<Medico *>& medicos, int id);
 void listarPorEspecialidad(const std::vector<Medico *>& medicos, const std::string& especialidad);
 void listarPorDisponibilidad(const std::vector<Medico *>& medicos);
+bool existeMedicoId(const std::vector<Medico *>& medicos, int id);
+void mostrarListaMedicos(const std::vector<Medico *>& medicos);
 
 #endif

@@ -25,6 +25,9 @@ public:
     void modificarDatosPersonales(const std::string &direccion,int edad,const std::string &notas,int telefono);
     void mostrarHistorial() const;
     void agregarRegistro(const RegistroClinico& registro);
+    int numRegistros()const;
+     // Método para obtener el vector de registros clinicos
+    std::vector<RegistroClinico> obtenerRegitrosClinicos() const;
 };
 
 void listarPorFechaRegistro(const std::vector<Paciente *>& pacientes, const Fecha& fecha);
@@ -33,5 +36,8 @@ void busquedaPorId(const std::vector<Paciente *>& pacientes, int id);
 
 void altaPaciente(std::vector<Paciente *>& pacientes,int id, const std::string& nombre, const std::string& direccion, int anioNacimiento, int telefono, const std::string &notas,const Fecha& fecha);
 void bajaPaciente(std::vector<Paciente *>& pacientes, int id);
+
+bool existePacienteId(const std::vector<Paciente *>& pacientes, int id);
+void mostrarListaPacientes(const std::vector<Paciente *>& pacientes);
 
 #endif

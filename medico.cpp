@@ -44,8 +44,8 @@ void Medico::generarReporte(const std::string &comentario)const{
     <<this->especialidad<<": "<<comentario;
 }
 
-void altaMedico(std::vector<Medico *>& medicos,int id, const std::string& nombre, const std::string& direccion, int anioNacimiento,const std::string &especialidad) {
-    Medico* medico= new Medico(id, nombre, direccion, anioNacimiento,especialidad ,false);
+void altaMedico(std::vector<Medico *>& medicos,int id, const std::string& nombre, const std::string& direccion, int anioNacimiento,const std::string &especialidad,bool disponible) {
+    Medico* medico= new Medico(id, nombre, direccion, anioNacimiento,especialidad ,disponible);
     medicos.push_back(medico);
     std::cout << "Médico " << nombre << " dado de alta con especialidad " << especialidad << ".\n";
 }
@@ -83,5 +83,28 @@ void listarPorDisponibilidad(const std::vector<Medico *>& medicos) {
         if (medico->getDisponible()) {
             std::cout<<"Nombre: "<<medico->getNombre()<<"\n";
         }
+    }
+}
+
+bool existeMedicoId(const std::vector<Medico *>& medicos, int id){
+    bool existe=false;
+    size_t i=0;
+    while(!existe && i<medicos.size()){
+        if(medicos[i]->getId()==id){
+            existe=true;
+        }
+        i++;
+    }
+
+    if (!existe) {
+        std::cout << "No se encontró el medico con ID: " << id << ".\n";
+    }
+
+    return existe;
+}
+
+void mostrarListaMedicos(const std::vector<Medico *>& medicos){
+    for (const auto& medico : medicos) {
+        medico->mostrarInformacion();
     }
 }

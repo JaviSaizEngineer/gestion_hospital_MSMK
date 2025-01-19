@@ -8,6 +8,13 @@ RegistroClinico::RegistroClinico(const Fecha &fecha, std::string diagnostico, st
     this->observaciones=observaciones;
 }
 
+RegistroClinico::RegistroClinico(){
+    this->fecha=Fecha(1,1,2000);
+    this->diagnostico="-";
+    this->tratamiento="-";
+    this->observaciones="-";
+}
+
 void RegistroClinico::mostrarRegistro() const {
     std::cout << "Fecha: " << this->fecha << "\n";
     std::cout << "Diagnóstico: " << this->diagnostico << "\n";

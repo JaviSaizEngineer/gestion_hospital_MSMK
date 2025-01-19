@@ -65,6 +65,13 @@ void Paciente::agregarRegistro(const RegistroClinico& registro) {
     this->historialClinico.push_back(registro);  // Agrega un nuevo registro al historial
 }
 
+int Paciente::numRegistros()const{
+    return this->historialClinico.size();
+}
+
+std::vector<RegistroClinico> Paciente::obtenerRegitrosClinicos() const {
+        return this->historialClinico;  // Devolvemos el vector de registros clinicos
+    }
 
 //funciones
 void altaPaciente(std::vector<Paciente *>& pacientes,int id, const std::string& nombre, const std::string& direccion, int anioNacimiento, int telefono, const std::string &notas,const Fecha& fecha) {
@@ -130,5 +137,28 @@ void busquedaPorId(const std::vector<Paciente *>& pacientes, int id){
 
     if (!encontrado) {
         std::cout << "No se encontró el paciente con ID: " << id << ".\n";
+    }
+}
+
+bool existePacienteId(const std::vector<Paciente *>& pacientes, int id){
+    bool existe=false;
+    size_t i=0;
+    while(!existe && i<pacientes.size()){
+        if(pacientes[i]->getId()==id){
+            existe=true;
+        }
+        i++;
+    }
+
+    if (!existe) {
+        std::cout << "No se encontró el paciente con ID: " << id << ".\n";
+    }
+
+    return existe;
+}
+
+void mostrarListaPacientes(const std::vector<Paciente *>& pacientes){
+    for (const auto& paciente : pacientes) {
+        paciente->mostrarInformacion();
     }
 }

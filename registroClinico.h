@@ -11,7 +11,8 @@ private:
 
 public:
     RegistroClinico(const Fecha &fecha, std::string diagnostico, std::string tratamiento, std::string observaciones);
-    
+    RegistroClinico();
+
     void mostrarRegistro() const;
 
     Fecha getFecha() const;

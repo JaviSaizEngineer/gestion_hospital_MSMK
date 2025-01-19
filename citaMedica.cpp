@@ -58,9 +58,21 @@ void CitaMedica::setUrgente(bool urgente){
 //funciones
 
 void asignarCita(std::vector<CitaMedica *>& citas,int id,const Paciente &paciente,const Medico &medico, const Fecha &fecha,bool urgente){
-    CitaMedica* cita= new CitaMedica(id,paciente,medico, fecha,urgente);
-    citas.push_back(cita);
-    std::cout << "Cita con id " << id << " agregada.\n";
+    bool encontrado=false;
+    size_t i=0;
+    while(!encontrado && i<citas.size()){
+        if(citas[i]->getId()==id){
+            encontrado=true;
+            std::cout << "Ya exite ua cita con con id: " << id << ".\n";
+        }
+        i++;
+    }
+
+    if (!encontrado) {
+        CitaMedica* cita= new CitaMedica(id,paciente,medico, fecha,urgente);
+        citas.push_back(cita);
+        std::cout << "Cita con id " << id << " agregada.\n";
+    }
 }
 
 // Comparador para ordenar las citas
